@@ -6,13 +6,20 @@ exports.getByHostname = function(request, response) {
 	console.log('Received requuest for an SPF lookup of ' + lookupHostname);
 
 	request = dns.resolve(lookupHostname, 'SPF', function (err, results) {
-	  console.log("---- Direct Request ----");
+
+		if(!results) {
+	  	response.status = 200;
+	  	response.end();
+	  	console.log("No such dice.")
+	  	return;
+		}
+
+	  console.log("results");
 	  results.forEach(function (result) {
 	  	response.status = 200;
 	  	response.end(result);
 	    console.log(result);
 	  });
-	  console.log("------------------------");
 	});
 
 	// var question = dns.Question({
