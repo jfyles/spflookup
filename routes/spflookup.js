@@ -5,7 +5,7 @@ exports.getByHostname = function(request, response) {
 
 	console.log('Received requuest for an SPF lookup of ' + lookupHostname);
 
-	request = dns.resolve(lookupHostname, 'TXT', function (err, results) {
+	request = dns.resolve(lookupHostname, 'SPF', function (err, results) {
 	  console.log("---- Direct Request ----");
 	  results.forEach(function (result) {
 	  	response.status = 200;
