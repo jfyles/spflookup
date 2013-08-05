@@ -5,15 +5,15 @@ exports.getByHostname = function(request, response) {
 
 	console.log('Received requuest for an SPF lookup of ' + lookupHostname);
 
-request = dns.resolve(lookupHostname, 'TXT', '8.8.8.8', function (err, results) {
-  console.log("---- Direct Request ----");
-  results.forEach(function (result) {
-    console.log(result);
-  });
-  console.log("------------------------");
-});
+	request = dns.resolve(lookupHostname, 'TXT', function (err, results) {
+	  console.log("---- Direct Request ----");
+	  results.forEach(function (result) {
+	    console.log(result);
+	  });
+	  console.log("------------------------");
+	  response.end();
+	});
 
-	response.end();
 	// var question = dns.Question({
 	//   name: lookupHostname,
 	//   type: 'TXT'
