@@ -8,10 +8,11 @@ exports.getByHostname = function(request, response) {
 	request = dns.resolve(lookupHostname, 'TXT', function (err, results) {
 	  console.log("---- Direct Request ----");
 	  results.forEach(function (result) {
+	  	response.status = 200;
+	  	response.end(result);
 	    console.log(result);
 	  });
 	  console.log("------------------------");
-	  response.end();
 	});
 
 	// var question = dns.Question({
