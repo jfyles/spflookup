@@ -14,12 +14,15 @@ exports.getByHostname = function(request, response) {
 	  	return;
 		}
 
-	  console.log("results");
-	  results.forEach(function (result) {
-	  	response.status = 200;
-	  	response.end(result);
-	    console.log(result);
-	  });
+	  console.log(results);
+	  response.status = 200;
+	  response.end(results);
+	  
+	  // results.forEach(function (result) {
+	  // 	response.status = 200;
+	  // 	response.end(result);
+	  //   console.log(result);
+	  // });
 	});
 
 	// var question = dns.Question({
